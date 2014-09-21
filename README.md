@@ -21,6 +21,9 @@
 		- [2.9 Cài đặt HORIZON](#user-content-29-c%C3%A0i-%C4%91%E1%BA%B7t-horizon)
 		- [2.10 Tạo các subnet, router cho tenant](#user-content-210-t%E1%BA%A1o-c%C3%A1c-subnet-router-cho-tenant)
 - [III. Chuyển qua hướng dẫn sử dụng dashboard (horizon)](#user-content-iii-chuy%E1%BB%83n-qua-h%C6%B0%E1%BB%9Bng-d%E1%BA%ABn-s%E1%BB%AD-d%E1%BB%A5ng-dashboard-horizon)
+- [IV. CÀI ÐẶT TRÊN COMPUTE NODE (COMPUTE1)](#user-content-iv-c%C3%80i-%C3%90t-tr%C3%8An-compute-node-compute1)
+- [1. Ðặt hostname, IP và các gói bổ trợ](#user-content-1-%C3%90%E1%BA%B7t-hostname-ip-v%C3%A0-c%C3%A1c-g%C3%B3i-b%E1%BB%95-tr%E1%BB%A3)
+- [2. Cài đặt các gói của NOVA cho COMPUTE NODE](#user-content-2-c%C3%A0i-d%E1%BA%B7t-c%C3%A1c-g%C3%B3i-c%E1%BB%A7a-nova-cho-compute-node)
 
 # I. Thông tin LAB
 - Cài đặt OpenStack Icehouse trên Ubuntu 12.04, môi trường giả lập vmware-workstation
@@ -168,10 +171,8 @@ Truy cập vào dashboard với IP http://IP_ADDRESS_External/horizon
 	Pass: Welcome123
 	
 	
-#IV. CÀI Ð?T TRÊN COMPUTE NODE (COMPUTE1)
-Luu ý: C?n th?c hi?n bu?c t?i script t? github v? nhu hu?ng d?n ? bu?c B.1 và B.2 (n?u có thay d?i IP)
-Th?c hi?n các shell du?i d? thi?t l?p hostname, gán ip và cài d?t các thành ph?n c?a nove trên máy COMPUTE NODE
-- T?i các gói c?n thi?t 
+#IV. CÀI ÐẶT TRÊN COMPUTE NODE (COMPUTE1)
+- Tải các gói cần thiết
 ```sh
 apt-get update
 
@@ -190,53 +191,10 @@ chmod +x *.sh
 
     bash com1-ipdd.sh
 
-Sau khi thực hiện xong shell trên các NICs của COMPUTE NODE sẽ nhu sau: (giống với khai báo trong file 
-
-<!--
-<b><i>config.cfg</i></b>)
-
-<table>
-  <tr>
-    <th>Hostname</th>
-    <th>NICs</th>
-    <th>IP ADDRESS</th>
-    <th>SUBNET MASK</th>
-    <th>GATEWAY</th>
-    <th>DNS</th>
-    <th>NOTE</th>
-  </tr>
-  <tr>
-    <td rowspan="3">compute1</td>
-    <td>eth0</td>
-    <td>10.10.10.73</td>
-    <td>255.255.255.0</td>
-    <td>Ð? tr?ng</td>
-    <td>Ð? tr?ng</td>
-    <td>Ch? d? VMNET2</td>
-  </tr>
-  <tr>
-    <td>br-ex</td>
-    <td>192.168.1.73</td>
-    <td>255.255.255.0</td>
-    <td>192.168.1.1</td>
-    <td>8.8.8.8</td>
-    <td>Ch? d? bridge</td>
-  </tr>
-  <tr>
-    <td>eth2</td>
-    <td>10.10.20.73</td>
-    <td>255.255.255.0</td>
-    <td>Ð? tr?ng</td>
-    <td>Ð? tr?ng</td>
-    <td>Ch? d? VMNET3</td>
-  </tr>
-</table>
--->
-
 COMPUTE node sẽ khởi động lại, cần phải đăng nhập bằng tài khoản root để thực hiện shell duới
     
 
-#2. Cài dặt các gói của NOVA cho COMPUTE NODE
+#2. Cài đặt các gói của NOVA cho COMPUTE NODE
 
 Ðăng nhập bằng tài khoản root và thực thi các lệnh duới để tiến hành cài đặt nova
 
@@ -248,7 +206,7 @@ Chộn YES ở màn hình trên trong quá trình cài đặt
 
 ![Alt text](http://i.imgur.com/jlRegTI.png)
 
-Kết thúc bu?c cài đặt trên COMPUTE NODE
+Kết thúc buớc cài đặt trên COMPUTE NODE
 
 
 
