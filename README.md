@@ -66,9 +66,9 @@ Thực hiện tải gói gile và phân quyền cho các file sau khi tải từ
 
     apt-get install git -y
 	
-    git clone https://github.com/vietstacker/icehouse-aio-ubuntu.git
+    git clone https://github.com/longsube/icehouse-12.04-aio.git
     
-	cd icehouse-aio-ubuntu
+	cd icehouse-12.04-aio
     
 	chmod +x *.sh
 
@@ -177,20 +177,20 @@ apt-get update
 
 apt-get install git -y
 
-git clone https://github.com/vdcit/openstack-3node-vdcit.git
+git clone https://github.com/longsube/icehouse-12.04-aio.git
 
 mv /root/openstack-3node-vdcit/script-ubuntu1204/ script-ubuntu1204
 
-cd script-ubuntu1204
+cd icehouse-12.04-aio
 
 chmod +x *.sh
 ```
-#1. Ð?t hostname, IP và các gói b? tr?
+#1. Ðặt hostname, IP và các gói bổ trợ
 
 
     bash com1-ipdd.sh
 
-Sau khi th?c hi?n xong shell trên các NICs c?a COMPUTE NODE s? nhu sau: (gi?ng v?i khai báo trong file 
+Sau khi thực hiện xong shell trên các NICs của COMPUTE NODE sẽ nhu sau: (giống với khai báo trong file 
 
 <!--
 <b><i>config.cfg</i></b>)
@@ -233,22 +233,22 @@ Sau khi th?c hi?n xong shell trên các NICs c?a COMPUTE NODE s? nhu sau: (gi?ng
 </table>
 -->
 
-COMPUTE node s? kh?i d?ng l?i, c?n ph?i dang nh?p b?ng t?i kho?n root d? th?c hi?n shell du?i
+COMPUTE node sẽ khởi động lại, cần phải đăng nhập bằng tài khoản root để thực hiện shell duới
     
 
-#2. Cài d?t các gói c?a NOVA cho COMPUTE NODE
+#2. Cài dặt các gói của NOVA cho COMPUTE NODE
 
-Ðang nh?p b?ng tài kho?n root và th?c thi các l?nh du?i d? ti?n hành cài d?t nova
+Ðăng nhập bằng tài khoản root và thực thi các lệnh duới để tiến hành cài đặt nova
 
     cd script-ubuntu1204
 	
     bash com1-prepare.sh
 
-Ch?n YES ? màn hình trên trong quá trình cài d?t
+Chộn YES ở màn hình trên trong quá trình cài đặt
 
 ![Alt text](http://i.imgur.com/jlRegTI.png)
 
-K?t thúc bu?c cài d?t trên COMPUTE NODE, chuy?n v? CONTROLLER NODE.
+Kết thúc bu?c cài đặt trên COMPUTE NODE
 
 
 
