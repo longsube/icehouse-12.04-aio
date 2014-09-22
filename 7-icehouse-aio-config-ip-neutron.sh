@@ -9,7 +9,7 @@ echo "########## Cau hinh br-int va br-ex cho OpenvSwitch ##########"
 sleep 5
 ovs-vsctl add-br br-int
 ovs-vsctl add-br br-ex
-ovs-vsctl add-port br-ex eth0
+ovs-vsctl add-port br-ex eth1
 
 echo "########## Cau hinh dia chi IP cho br-ex ##########"
 
@@ -29,15 +29,15 @@ netmask 255.255.255.0
 gateway $GATEWAY_IP
 dns-nameservers 8.8.8.8
 
-auto eth0
-iface eth0 inet manual
+auto eth1
+iface eth1 inet manual
    up ifconfig \$IFACE 0.0.0.0 up
    up ip link set \$IFACE promisc on
    down ip link set \$IFACE promisc off
    down ifconfig \$IFACE down
 
-auto eth1
-iface eth1 inet static
+auto eth0
+iface eth0 inet static
 address $LOCAL_IP
 netmask 255.255.255.0
 
