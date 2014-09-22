@@ -18,13 +18,13 @@ iface lo inet loopback
 # DATA NETWORK
 auto eth0
 iface eth0 inet static
-address $CON_MGNT_IP
+address $LOCAL_IP
 netmask $NETMASK_ADD_VM
 
 # EXT NETWORK
 auto eth1
 iface eth1 inet static
-address $CON_EXT_IP
+address $MASTER
 netmask $NETMASK_ADD
 gateway $GATEWAY_IP
 dns-nameservers 8.8.8.8
@@ -58,7 +58,7 @@ cat << EOF >> $iphost
 127.0.0.1       localhost
 127.0.1.1       controller
 #$MASTER			controller
-$CON_MGNT_IP		controller
+$LOCAL_IP		controller
 $COM1_MGNT_IP	compute1
  
 # The following lines are desirable for IPv6 capable hosts

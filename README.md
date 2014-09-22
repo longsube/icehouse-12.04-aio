@@ -34,7 +34,7 @@ Thiết lập như mô hình sau:
 - Cài đặt OpenStack Icehouse trên Ubuntu 12.04 trên các node
 - Các thành phần cài đặt trong OpenStack: Keystone, Glance, Nova (sử dụng KVM), Neutron, Horizon
 - Neutron sử dụng plugin ML2, GRE và use case cho mô hình mạng là per-teanant per-router
-- Các node sử dụng 2 Nics. Eth0 dành cho Extenal, API, MGNT. Eth1 dành cho Internal.
+- Các node sử dụng 2 Nics. Eth1 dành cho Extenal. Eth0 dành cho Management.
 
 # II. Các bước cài đặt trên node AIO
 ## 1. Cài đặt Ubuntu 12.04 trên tất cả các node
