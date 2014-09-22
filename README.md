@@ -27,7 +27,8 @@
 
 # I. Thông tin LAB
 Thiết lập như mô hình sau:
-http://i.imgur.com/afmZNvg.jpg
+<img src=http://i.imgur.com/afmZNvg.jpg width="60%" height="60%" border="1">
+
 
 - Cài đặt OpenStack Icehouse trên Ubuntu 12.04 trên các node
 - Các thành phần cài đặt trong OpenStack: Keystone, Glance, Nova (sử dụng KVM), Neutron, Horizon

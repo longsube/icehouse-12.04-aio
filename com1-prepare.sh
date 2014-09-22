@@ -19,11 +19,9 @@ rm $iphost
 touch $iphost
 cat << EOF >> $iphost
 127.0.0.1       localhost
-$CON_MGNT_IP    controller
+127.0.1.1       compute1
+$LOCAL_IP    	controller
 $COM1_MGNT_IP      compute1
-127.0.0.1        compute1
-$COM2_MGNT_IP      compute2
-$NET_MGNT_IP     network
 EOF
 
 # Cai dat repos va update
