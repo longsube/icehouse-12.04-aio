@@ -22,14 +22,14 @@ iface lo inet loopback
 # MGNT NETWORK
 auto eth0
 iface eth0 inet static
-address $COM1_MGNT_IP
+address $LOCAL_IP
 netmask $NETMASK_ADD_VM
 
 
 # EXT NETWORK
 auto eth1
 iface eth1 inet static
-address $COM1_EXT_IP
+address $MASTER
 netmask $NETMASK_ADD
 gateway $GATEWAY_IP
 dns-nameservers 8.8.8.8
