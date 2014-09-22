@@ -7,7 +7,7 @@
 - [Hướng dẫn cài đặt bằng script OpenStack Icehouse AIO](#user-content-h%C6%B0%E1%BB%9Bng-d%E1%BA%ABn-c%C3%A0i-%C4%91%E1%BA%B7t-b%E1%BA%B1ng-script-openstack-icehouse-aio)
 - [I. Thông tin LAB](#user-content-i-th%C3%B4ng-tin-lab)
 - [II. Các bước cài đặt](#user-content-ii-c%C3%A1c-b%C6%B0%E1%BB%9Bc-c%C3%A0i-%C4%91%E1%BA%B7t)
-	- [1. Cài đặt Ubuntu 12.04 trong Vmware Workstation](#user-content-1-c%C3%A0i-%C4%91%E1%BA%B7t-ubuntu-1204-trong-vmware-workstation)
+	- [1. Cài đặt Ubuntu 12.04 trên các node](#user-content-1-c%C3%A0i-%C4%91%E1%BA%B7t-ubuntu-1204-trên-các-node)
 	- [2. Thực hiện các script](#user-content-2-th%E1%BB%B1c-hi%E1%BB%87n-c%C3%A1c-script)
 		- [2.0 Update hệ thống và cài đặt các gói bổ trợ](#user-content-20-update-h%E1%BB%87-th%E1%BB%91ng-v%C3%A0-c%C3%A0i-%C4%91%E1%BA%B7t-c%C3%A1c-g%C3%B3i-b%E1%BB%95-tr%E1%BB%A3)
 		- [2.1 Cài đặt MYSQL và tạo DB cho các thành phần](#user-content-21-c%C3%A0i-%C4%91%E1%BA%B7t-mysql-v%C3%A0-t%E1%BA%A1o-db-cho-c%C3%A1c-th%C3%A0nh-ph%E1%BA%A7n)
@@ -22,43 +22,23 @@
 		- [2.10 Tạo các subnet, router cho tenant](#user-content-210-t%E1%BA%A1o-c%C3%A1c-subnet-router-cho-tenant)
 - [III. Chuyển qua hướng dẫn sử dụng dashboard (horizon)](#user-content-iii-chuy%E1%BB%83n-qua-h%C6%B0%E1%BB%9Bng-d%E1%BA%ABn-s%E1%BB%AD-d%E1%BB%A5ng-dashboard-horizon)
 - [IV. CÀI ÐẶT TRÊN COMPUTE NODE (COMPUTE1)](#user-content-iv-c%C3%80i-%C3%90t-tr%C3%8An-compute-node-compute1)
-- [1. Ðặt hostname, IP và các gói bổ trợ](#user-content-1-%C3%90%E1%BA%B7t-hostname-ip-v%C3%A0-c%C3%A1c-g%C3%B3i-b%E1%BB%95-tr%E1%BB%A3)
-- [2. Cài đặt các gói của NOVA cho COMPUTE NODE](#user-content-2-c%C3%A0i-d%E1%BA%B7t-c%C3%A1c-g%C3%B3i-c%E1%BB%A7a-nova-cho-compute-node)
+		- [1. Ðặt hostname, IP và các gói bổ trợ](#user-content-1-%C3%90%E1%BA%B7t-hostname-ip-v%C3%A0-c%C3%A1c-g%C3%B3i-b%E1%BB%95-tr%E1%BB%A3)
+		- [2. Cài đặt các gói của NOVA cho COMPUTE NODE](#user-content-2-c%C3%A0i-d%E1%BA%B7t-c%C3%A1c-g%C3%B3i-c%E1%BB%A7a-nova-cho-compute-node)
 
 # I. Thông tin LAB
-- Cài đặt OpenStack Icehouse trên Ubuntu 12.04, môi trường giả lập vmware-workstation
+Thiết lập như mô hình sau:
+http://i.imgur.com/afmZNvg.jpg
+
+- Cài đặt OpenStack Icehouse trên Ubuntu 12.04 trên các node
 - Các thành phần cài đặt trong OpenStack: Keystone, Glance, Nova (sử dụng KVM), Neutron, Horizon
 - Neutron sử dụng plugin ML2, GRE và use case cho mô hình mạng là per-teanant per-router
-- Máy ảo sử dụng 2 Nics. Eth0 dành cho Extenal, API, MGNT. Eth1 dành cho Internal.
+- Các node sử dụng 2 Nics. Eth0 dành cho Extenal, API, MGNT. Eth1 dành cho Internal.
 
-# II. Các bước cài đặt
-## 1. Cài đặt Ubuntu 12.04 trong Vmware Workstation
-
-Thiết lập cấu hình cho Ubuntu Server 12.04 trong VMware Workstation hoặc máy vật lý như sau
-
-- RAM 4GB
-- 1st HDD (sda) 60GB cài đặt Ubuntu server 12.04-4
-- 2nd HDD (sdb) Làm volume cho CINDER
-- 3rd HDD (sdc) Dùng cho cấu hình SWIFT
-- NIC 1st : External - dùng chế độ bridge - Dải IP 192.168.1.0/24 - Gateway 192.168.1.1
-- NIC 2nd : Inetnal VM - dùng chế độ vmnet4 (cần setup trong vmware workstation trước khi cài Ubuntu - dải IP  192.168.10.0/24
-
-| NIC 	       | IP ADDRESS     |  SUBNET MASK  | GATEWAY       | DNS     |                   Note               |
-| -------------|----------------|---------------|---------------|-------  |--------------------------------------| 
-| NIC 1 (eth0) | 192.168.1.xxx  | 255.255.255.0 | 192.168.1.1   | 8.8.8.8 | Bridge trong VMware Workstation      |
-| NIC 2 (eth1) | 192.168.10.xxx | 255.255.255.0 |    NULL       |   NULL  | Dùng VMnet4 trong Vmware Workstation |
-
+# II. Các bước cài đặt trên node AIO
+## 1. Cài đặt Ubuntu 12.04 trên tất cả các node
 
 - Mật khẩu cho tất cả các dịch vụ là Welcome123
 - Cài đặt với quyền root
-
-- Ảnh thiết lập cấu hình cho Ubuntu server
-
-<img src=http://i.imgur.com/NpiF3HF.png width="60%" height="60%" border="1">
-
-- Ảnh thiết lập network cho vmware workstation 
-
-<img src=http://i.imgur.com/pNg16qO.png width="60%" height="60%" border="1">
 
 
 ## 2. Thực hiện các script
@@ -74,6 +54,8 @@ Thực hiện tải gói gile và phân quyền cho các file sau khi tải từ
 	cd icehouse-12.04-aio
     
 	chmod +x *.sh
+	
+Sửa lại địa chỉ IP các node trên config.cfg
 
 ### 2.0 Update hệ thống và cài đặt các gói bổ trợ
 
@@ -171,7 +153,7 @@ Truy cập vào dashboard với IP http://IP_ADDRESS_External/horizon
 	Pass: Welcome123
 	
 	
-#IV. CÀI ÐẶT TRÊN COMPUTE NODE (COMPUTE1)
+# IV. CÀI ÐẶT TRÊN COMPUTE NODE (COMPUTE1)
 - Tải các gói cần thiết
 ```sh
 apt-get update
@@ -186,7 +168,7 @@ cd icehouse-12.04-aio
 
 chmod +x *.sh
 ```
-#1. Ðặt hostname, IP và các gói bổ trợ
+## 1. Ðặt hostname, IP và các gói bổ trợ
 
 
     bash com1-ipdd.sh
@@ -194,7 +176,7 @@ chmod +x *.sh
 COMPUTE node sẽ khởi động lại, cần phải đăng nhập bằng tài khoản root để thực hiện shell duới
     
 
-#2. Cài đặt các gói của NOVA cho COMPUTE NODE
+## 2. Cài đặt các gói của NOVA cho COMPUTE NODE
 
 Ðăng nhập bằng tài khoản root và thực thi các lệnh duới để tiến hành cài đặt nova
 
