@@ -28,7 +28,7 @@
 # I. Thông tin LAB
 Thiết lập như mô hình sau:
 
-<img src=http://i.imgur.com/afmZNvg.jpg width="60%" height="60%" border="1">
+<img src=http://i.imgur.com/LSLvsxR.jpg width="60%" height="60%" border="1">
 
 
 - Cài đặt OpenStack Icehouse trên Ubuntu 12.04 trên các node
