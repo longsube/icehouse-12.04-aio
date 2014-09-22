@@ -27,6 +27,7 @@
 
 # I. Thông tin LAB
 Thiết lập như mô hình sau:
+
 <img src=http://i.imgur.com/afmZNvg.jpg width="60%" height="60%" border="1">
 
 
