@@ -22,8 +22,8 @@
 		- [2.10 Tạo các subnet, router cho tenant](#user-content-210-t%E1%BA%A1o-c%C3%A1c-subnet-router-cho-tenant)
 - [III. Chuyển qua hướng dẫn sử dụng dashboard (horizon)](#user-content-iii-chuy%E1%BB%83n-qua-h%C6%B0%E1%BB%9Bng-d%E1%BA%ABn-s%E1%BB%AD-d%E1%BB%A5ng-dashboard-horizon)
 - [IV. CÀI ÐẶT TRÊN COMPUTE NODE (COMPUTE1)](#user-content-iv-c%C3%80i-%C3%90t-tr%C3%8An-compute-node-compute1)
-		- [1. Ðặt hostname, IP và các gói bổ trợ](#user-content-1-%C3%90%E1%BA%B7t-hostname-ip-v%C3%A0-c%C3%A1c-g%C3%B3i-b%E1%BB%95-tr%E1%BB%A3)
-		- [2. Cài đặt các gói của NOVA cho COMPUTE NODE](#user-content-2-c%C3%A0i-d%E1%BA%B7t-c%C3%A1c-g%C3%B3i-c%E1%BB%A7a-nova-cho-compute-node)
+    - [1. Ðặt hostname, IP và các gói bổ trợ](#user-content-1-%C3%90%E1%BA%B7t-hostname-ip-v%C3%A0-c%C3%A1c-g%C3%B3i-b%E1%BB%95-tr%E1%BB%A3)
+    - [2. Cài đặt các gói của NOVA cho COMPUTE NODE](#user-content-2-c%C3%A0i-d%E1%BA%B7t-c%C3%A1c-g%C3%B3i-c%E1%BB%A7a-nova-cho-compute-node)
 
 # I. Thông tin LAB
 Thiết lập như mô hình sau:
